@@ -24,4 +24,10 @@ class ItemTest {
         assertEquals(1.50, item.getTax());
     }
 
+    @Test
+    void calculate_tax_of_imported_product() {
+        Item item = new Item("imported box of chocolate", 10.0);
+        assertEquals(1.55, item.getTax());
+    }
+
 }
