@@ -49,4 +49,16 @@ class ItemTest {
         assertEquals("imported box of chocolates", item.getName());
         assertEquals(1000, item.getPrice());
     }
+
+    @Test
+    void return_price_in_double() {
+        Item item = new Item(1, "imported box of chocolate", 1530, true);
+        assertEquals(15.30, item.getPriceInDecimals());
+    }
+
+    @Test
+    void return_tax_in_double() {
+        Item item = new Item(1, "imported box of chocolate", 1530, true);
+        assertEquals(2.4, item.getTaxInDecimals());
+    }
 }

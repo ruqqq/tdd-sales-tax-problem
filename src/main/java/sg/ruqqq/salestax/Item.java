@@ -29,6 +29,14 @@ public class Item {
         this.price = (int) (Double.parseDouble(priceString) * 100);
     }
 
+    public double getPriceInDecimals() {
+        return (double) price / 100;
+    }
+
+    public double getTaxInDecimals() {
+        return (double) getTax() / 100;
+    }
+
     public int getTax() {
         if (isImported()) {
             return getImportedTax();
