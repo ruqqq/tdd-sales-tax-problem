@@ -19,30 +19,6 @@ class ItemTest {
     }
 
     @Test
-    void calculate_tax_of_local_product() {
-        Item item = new Item(1, "box of chocolate", 1500, false);
-        assertEquals(150, item.getTax());
-    }
-
-    @Test
-    void calculate_tax_of_imported_product() {
-        Item item = new Item(1, "imported box of chocolate", 1000, true);
-        assertEquals(155, item.getTax());
-    }
-
-    @Test
-    void calculate_tax_of_imported_product_with_rounding_up() {
-        Item item = new Item(1, "imported box of chocolate", 1500, true);
-        assertEquals(235, item.getTax());
-    }
-
-    @Test
-    void calculate_tax_of_imported_product_with_rounding_up_to_next_10_cents() {
-        Item item = new Item(1, "imported box of chocolate", 1530, true);
-        assertEquals(240, item.getTax());
-    }
-
-    @Test
     void parse_string_to_item() {
         Item item = new Item("1 imported box of chocolates at 10.00");
         assertEquals(1, item.getQty());
@@ -56,9 +32,4 @@ class ItemTest {
         assertEquals(15.30, item.getPriceInDecimals());
     }
 
-    @Test
-    void return_tax_in_double() {
-        Item item = new Item(1, "imported box of chocolate", 1530, true);
-        assertEquals(2.4, item.getTaxInDecimals());
-    }
 }
