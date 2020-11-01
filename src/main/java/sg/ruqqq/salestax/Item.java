@@ -29,7 +29,15 @@ public class Item {
         this.name = String.join(" ", Arrays.asList(splitLine).subList(1, splitLine.length - 2));
         this.imported = name.startsWith("imported");
         this.price = (int) (Double.parseDouble(priceString) * 100);
-        this.type = Type.OTHERS;
+        this.type = inferTypeFromName(this.name);
+    }
+
+    private Type inferTypeFromName(String name) {
+        if (name.contains("box of chocolates")) {
+            return Type.FOOD;
+        }
+
+        return Type.OTHERS;
     }
 
     public double getPriceInDecimals() {

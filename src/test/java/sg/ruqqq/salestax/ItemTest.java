@@ -32,4 +32,15 @@ class ItemTest {
         assertEquals(15.30, item.getPriceInDecimals());
     }
 
+    @Test
+    void parse_item_as_others() {
+        Item item = new Item("1 imported bottle of perfume at 10.00");
+        assertEquals(Item.Type.OTHERS, item.getType());
+    }
+
+    @Test
+    void parse_item_as_food() {
+        Item item = new Item("1 imported box of chocolates at 10.00");
+        assertEquals(Item.Type.FOOD, item.getType());
+    }
 }
