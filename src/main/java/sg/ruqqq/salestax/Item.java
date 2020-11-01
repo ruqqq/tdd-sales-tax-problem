@@ -35,6 +35,10 @@ public class Item {
     private Type inferTypeFromName(String name) {
         if (name.contains("box of chocolates")) {
             return Type.FOOD;
+        } else if (name.contains("book")) {
+            return Type.BOOK;
+        } else if (name.contains("headache pills")) {
+            return Type.MEDICAL_PRODUCT;
         }
 
         return Type.OTHERS;
@@ -47,7 +51,7 @@ public class Item {
     public enum Type {
         BOOK,
         FOOD,
-        MEDICAL_PRODUCTS,
+        MEDICAL_PRODUCT,
         OTHERS,
     }
 }

@@ -43,4 +43,16 @@ class ItemTest {
         Item item = new Item("1 imported box of chocolates at 10.00");
         assertEquals(Item.Type.FOOD, item.getType());
     }
+
+    @Test
+    void parse_item_as_book() {
+        Item item = new Item("1 book at 10.00");
+        assertEquals(Item.Type.BOOK, item.getType());
+    }
+
+    @Test
+    void parse_item_as_medical_product() {
+        Item item = new Item("1 headache pills at 10.00");
+        assertEquals(Item.Type.MEDICAL_PRODUCT, item.getType());
+    }
 }
