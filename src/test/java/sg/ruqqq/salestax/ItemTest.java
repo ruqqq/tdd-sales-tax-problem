@@ -8,13 +8,13 @@ class ItemTest {
 
     @Test
     void item_is_an_imported_product() {
-        Item item = new Item(1, "imported box of chocolate", 1500, true);
+        Item item = new Item(1, "imported box of chocolate", 1500, true, Item.Type.OTHERS);
         assertTrue(item.isImported());
     }
 
     @Test
     void item_is_not_an_imported_product() {
-        Item item = new Item(1, "box of chocolate", 1500, false);
+        Item item = new Item(1, "box of chocolate", 1500, false, Item.Type.OTHERS);
         assertFalse(item.isImported());
     }
 
@@ -28,7 +28,7 @@ class ItemTest {
 
     @Test
     void return_price_in_double() {
-        Item item = new Item(1, "imported box of chocolate", 1530, true);
+        Item item = new Item(1, "imported box of chocolate", 1530, true, Item.Type.OTHERS);
         assertEquals(15.30, item.getPriceInDecimals());
     }
 
