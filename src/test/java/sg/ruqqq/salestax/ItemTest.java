@@ -44,7 +44,7 @@ class ItemTest {
 
     @Test
     void parse_string_to_item() {
-        Item item = new Item("1 imported box of chocolates 10.00");
+        Item item = new Item("1 imported box of chocolates at 10.00");
         assertEquals(1, item.getQty());
         assertEquals("imported box of chocolates", item.getName());
         assertEquals(1000, item.getPrice());

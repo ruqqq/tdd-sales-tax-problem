@@ -24,7 +24,7 @@ public class Item {
         String qtyString = splitLine[0];
         String priceString = splitLine[splitLine.length - 1];
         this.qty = Integer.parseInt(qtyString);
-        this.name = String.join(" ", Arrays.asList(splitLine).subList(1, splitLine.length - 1));
+        this.name = String.join(" ", Arrays.asList(splitLine).subList(1, splitLine.length - 2));
         this.imported = name.startsWith("imported");
         this.price = (int) (Double.parseDouble(priceString) * 100);
     }
