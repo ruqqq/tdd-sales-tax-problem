@@ -8,7 +8,7 @@ public class TaxCalculator {
     public int getTax(Item item) {
         int tax = getBasicSalesTax(item.getPrice(), item.getType());
         if (item.isImported()) {
-            return tax + applyImportTax(item.getPrice() + tax);
+            return tax + applyImportTax(item.getPrice());
         }
         return tax;
     }

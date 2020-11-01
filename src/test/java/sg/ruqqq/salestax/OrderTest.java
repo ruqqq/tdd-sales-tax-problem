@@ -42,4 +42,21 @@ class OrderTest {
                 "Total: 29.83"
         ), receipt);
     }
+
+    @Test
+    void scenario_2() {
+        Order order = new Order(Arrays.asList(
+                "1 imported box of chocolates at 10.00",
+                "1 imported bottle of perfume at 47.50"
+        ));
+
+        List<String> receipt = order.getReceipt();
+
+        assertEquals(Arrays.asList(
+                "1 imported box of chocolates: 10.50",
+                "1 imported bottle of perfume: 54.65",
+                "Sales Tax: 7.65",
+                "Total: 65.15"
+        ), receipt);
+    }
 }
