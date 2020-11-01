@@ -6,17 +6,21 @@ public class TaxCalculator {
     }
 
     public int getTax(Item item) {
+        int tax = getBasicSalesTax(item.getPrice(), item.getType());
         if (item.isImported()) {
-            return getImportedTax(item.getPrice());
+            return tax + applyImportTax(item.getPrice() + tax);
         }
-        return getLocalTax(item.getPrice());
+        return tax;
     }
 
-    private int getImportedTax(int price) {
-        return roundToNearestCents(((price * 231) / 200) - price);
+    private int applyImportTax(int price) {
+        return roundToNearestCents(price * 21 / 20 - price);
     }
 
-    private int getLocalTax(int price) {
+    private int getBasicSalesTax(int price, Item.Type itemType) {
+        if (itemType.equals(Item.Type.BOOK) || itemType.equals(Item.Type.FOOD) || itemType.equals(Item.Type.MEDICAL_PRODUCT)) {
+            return 0;
+        }
         return roundToNearestCents(price / 10);
     }
 
