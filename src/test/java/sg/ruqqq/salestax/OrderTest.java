@@ -2,6 +2,7 @@ package sg.ruqqq.salestax;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,10 +17,10 @@ class OrderTest {
 
         List<String> receipt = order.getReceipt();
 
-        assertEquals(3, receipt.size());
-        assertEquals("1 book: 12.49", receipt.get(0));
-        assertEquals("Sales Tax: 1.25", receipt.get(1));
-        assertEquals("Total: 13.74", receipt.get(2));
+        assertEquals(Arrays.asList(
+                "1 book: 12.49",
+                "Sales Tax: 1.25",
+                "Total: 13.74"
+        ), receipt);
     }
-
 }
