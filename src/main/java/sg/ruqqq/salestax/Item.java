@@ -34,6 +34,8 @@ public class Item {
         int cents = amount % 10;
         if (cents > 0 && cents < 5) {
             return amount - cents + 5;
+        } else if (cents > 5) {
+            return amount - cents + 10;
         } else {
             return amount;
         }
