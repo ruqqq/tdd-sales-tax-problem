@@ -17,9 +17,13 @@ public class Item {
 
     public int getTax() {
         if (isImported()) {
-            return ((price * 231) / 200) - price;
+            return getImportedTax();
         }
         return getLocalTax();
+    }
+
+    private int getImportedTax() {
+        return ((price * 231) / 200) - price;
     }
 
     private int getLocalTax() {
