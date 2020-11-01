@@ -7,15 +7,22 @@ public class Item {
 
     private final String name;
     private final boolean imported;
-    private final double price;
+    private final int price;
 
-    public Item(String name, double price) {
+    public Item(String name, int price) {
         this.name = name;
         this.imported = name.startsWith("imported");
         this.price = price;
     }
 
-    public double getTax() {
-        return price * 0.1;
+    public int getTax() {
+        if (isImported()) {
+            return ((price * 231) / 200) - price;
+        }
+        return getLocalTax();
+    }
+
+    private int getLocalTax() {
+        return price / 10;
     }
 }

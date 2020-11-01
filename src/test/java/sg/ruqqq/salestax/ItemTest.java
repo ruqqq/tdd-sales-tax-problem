@@ -8,26 +8,26 @@ class ItemTest {
 
     @Test
     void item_is_an_imported_product() {
-        Item item = new Item("imported box of chocolate", 15.0);
+        Item item = new Item("imported box of chocolate", 1500);
         assertTrue(item.isImported());
     }
 
     @Test
     void item_is_not_an_imported_product() {
-        Item item = new Item("box of chocolate", 15.0);
+        Item item = new Item("box of chocolate", 1500);
         assertFalse(item.isImported());
     }
 
     @Test
     void calculate_tax_of_local_product() {
-        Item item = new Item("box of chocolate", 15.0);
-        assertEquals(1.50, item.getTax());
+        Item item = new Item("box of chocolate", 1500);
+        assertEquals(150, item.getTax());
     }
 
     @Test
     void calculate_tax_of_imported_product() {
-        Item item = new Item("imported box of chocolate", 10.0);
-        assertEquals(1.55, item.getTax());
+        Item item = new Item("imported box of chocolate", 1000);
+        assertEquals(155, item.getTax());
     }
 
 }
