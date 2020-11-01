@@ -23,10 +23,19 @@ public class Item {
     }
 
     private int getImportedTax() {
-        return ((price * 231) / 200) - price;
+        return roundToNearestCents(((price * 231) / 200) - price);
     }
 
     private int getLocalTax() {
-        return price / 10;
+        return roundToNearestCents(price / 10);
+    }
+
+    private int roundToNearestCents(int amount) {
+        int cents = amount % 10;
+        if (cents > 0 && cents < 5) {
+            return amount - cents + 5;
+        } else {
+            return amount;
+        }
     }
 }

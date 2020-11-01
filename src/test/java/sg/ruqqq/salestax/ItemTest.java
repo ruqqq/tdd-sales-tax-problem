@@ -30,4 +30,10 @@ class ItemTest {
         assertEquals(155, item.getTax());
     }
 
+    @Test
+    void calculate_tax_of_imported_product_with_rounding_up() {
+        Item item = new Item("imported box of chocolate", 1500);
+        assertEquals(235, item.getTax());
+    }
+
 }
