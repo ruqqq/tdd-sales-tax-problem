@@ -12,4 +12,10 @@ class ItemTest {
         assertTrue(item.isImported());
     }
 
+    @Test
+    void item_is_not_an_imported_product() {
+        Item item = new Item("box of chocolate");
+        assertFalse(item.isImported());
+    }
+
 }
