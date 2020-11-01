@@ -7,7 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class ItemTest {
 
     @Test
-    void test() {
+    void item_is_an_imported_product() {
+        Item item = new Item("imported box of chocolate");
+        assertTrue(item.isImported());
     }
 
 }
