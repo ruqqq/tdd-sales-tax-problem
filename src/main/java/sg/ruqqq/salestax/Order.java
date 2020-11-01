@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
+    private final TaxCalculator taxCalculator;
     private final List<Item> items;
 
     public Order(List<String> inputs) {
+        this.taxCalculator = new TaxCalculator();
         this.items = new ArrayList<>();
         for (String input : inputs) {
             this.items.add(new Item(input));
@@ -18,8 +20,9 @@ public class Order {
         double totalTax = 0;
         double totalPrice = 0;
         for (Item item : items) {
-            output.add(item.getQty() + " " + item.getName() + ": " + String.format("%.2f", item.getPriceInDecimals()));
-            totalTax += item.getTaxInDecimals();
+            double tax = taxCalculator.calculateTax(item);
+            output.add(item.getQty() + " " + item.getName() + ": " + String.format("%.2f", item.getPriceInDecimals() + tax));
+            totalTax += tax;
             totalPrice += item.getPriceInDecimals();
         }
         output.add("Sales Tax: " + String.format("%.2f", totalTax));

@@ -33,7 +33,7 @@ public class Item {
     }
 
     private Type inferTypeFromName(String name) {
-        if (name.contains("box of chocolates")) {
+        if (name.contains("box of chocolates") || name.contains("chocolate bar")) {
             return Type.FOOD;
         } else if (name.contains("book")) {
             return Type.BOOK;
