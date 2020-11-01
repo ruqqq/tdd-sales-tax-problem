@@ -9,9 +9,9 @@ public class Item {
     private final boolean imported;
     private final int price;
 
-    public Item(String name, int price) {
+    public Item(String name, int price, boolean imported) {
         this.name = name;
-        this.imported = name.startsWith("imported");
+        this.imported = imported;
         this.price = price;
     }
 
