@@ -26,14 +26,14 @@ public class Item {
         String qtyString = splitLine[0];
         String priceString = splitLine[splitLine.length - 1];
         this.qty = Integer.parseInt(qtyString);
-        this.name = String.join(" ", Arrays.asList(splitLine).subList(1, splitLine.length - 2));
-        this.imported = name.startsWith("imported");
-        this.price = (int) (Double.parseDouble(priceString) * 100);
+        this.name = String.join(" ", Arrays.asList(splitLine).subList(1, splitLine.length - 2)).replace("imported ", "");
+        this.imported = lineItem.contains("imported");
+        this.price = Integer.parseInt(priceString.replace(".", ""));
         this.type = inferTypeFromName(this.name);
     }
 
     private Type inferTypeFromName(String name) {
-        if (name.contains("box of chocolates") || name.contains("chocolate bar")) {
+        if (name.contains("chocolate")) {
             return Type.FOOD;
         } else if (name.contains("book")) {
             return Type.BOOK;

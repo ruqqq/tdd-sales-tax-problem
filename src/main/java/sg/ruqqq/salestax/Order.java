@@ -21,11 +21,11 @@ public class Order {
         double totalPrice = 0;
         for (Item item : items) {
             double tax = taxCalculator.calculateTax(item);
-            output.add(item.getQty() + " " + item.getName() + ": " + String.format("%.2f", item.getPriceInDecimals() + tax));
+            output.add(item.getQty() + (item.isImported() ? " imported " : " ") + item.getName() + ": " + String.format("%.2f", item.getPriceInDecimals() + tax));
             totalTax += tax;
             totalPrice += item.getPriceInDecimals();
         }
-        output.add("Sales Tax: " + String.format("%.2f", totalTax));
+        output.add("Sales Taxes: " + String.format("%.2f", totalTax));
         output.add("Total: " + String.format("%.2f", totalPrice + totalTax));
         return output;
     }

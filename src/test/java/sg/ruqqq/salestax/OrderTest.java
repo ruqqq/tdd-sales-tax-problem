@@ -19,8 +19,23 @@ class OrderTest {
 
         assertEquals(Arrays.asList(
                 "1 book: 12.49",
-                "Sales Tax: 0.00",
+                "Sales Taxes: 0.00",
                 "Total: 12.49"
+        ), receipt);
+    }
+
+    @Test
+    void should_output_price_rounded_up() {
+        Order order = new Order(Collections.singletonList(
+                "1 bottle of perfume at 18.99"
+        ));
+
+        List<String> receipt = order.getReceipt();
+
+        assertEquals(Arrays.asList(
+                "1 bottle of perfume: 20.89",
+                "Sales Taxes: 1.90",
+                "Total: 20.89"
         ), receipt);
     }
 
@@ -38,7 +53,7 @@ class OrderTest {
                 "1 book: 12.49",
                 "1 music CD: 16.49",
                 "1 chocolate bar: 0.85",
-                "Sales Tax: 1.50",
+                "Sales Taxes: 1.50",
                 "Total: 29.83"
         ), receipt);
     }
@@ -55,8 +70,29 @@ class OrderTest {
         assertEquals(Arrays.asList(
                 "1 imported box of chocolates: 10.50",
                 "1 imported bottle of perfume: 54.65",
-                "Sales Tax: 7.65",
+                "Sales Taxes: 7.65",
                 "Total: 65.15"
+        ), receipt);
+    }
+
+    @Test
+    void scenario_3() {
+        Order order = new Order(Arrays.asList(
+                "1 imported bottle of perfume at 27.99",
+                "1 bottle of perfume at 18.99",
+                "1 packet of headache pills at 9.75",
+                "1 box of imported chocolates at 11.25"
+        ));
+
+        List<String> receipt = order.getReceipt();
+
+        assertEquals(Arrays.asList(
+                "1 imported bottle of perfume: 32.19",
+                "1 bottle of perfume: 20.89",
+                "1 packet of headache pills: 9.75",
+                "1 imported box of chocolates: 11.85",
+                "Sales Taxes: 6.70",
+                "Total: 74.68"
         ), receipt);
     }
 }

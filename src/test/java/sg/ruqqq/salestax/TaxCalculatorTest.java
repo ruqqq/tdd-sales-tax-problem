@@ -36,6 +36,13 @@ class TaxCalculatorTest {
     }
 
     @Test
+    void calculate_tax_of_local_product_with_rounding_up_to_next_10_cents() {
+        Item item = new Item(1, "bottle of perfume", 1899, false, Item.Type.OTHERS);
+        double tax = taxCalculator.calculateTax(item);
+        assertEquals(1.9, tax);
+    }
+
+    @Test
     void exempted_from_basic_sales_tax_if_a_book() {
         Item item = new Item(1, "book", 1500, false, Item.Type.BOOK);
         double tax = taxCalculator.calculateTax(item);
