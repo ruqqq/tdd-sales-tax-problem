@@ -51,3 +51,23 @@ Output 3:
 Sales Taxes: 6.70
 Total: 74.68
 ```
+
+## About the solution
+
+Solution is a close simulation of the output of a 1-2 hour pairing interview.
+It is definitely not the most ideal solution nor the most elegant solution.
+If anything, it is just a simple but expandable (through refactoring protected by tests) solution.
+
+TDD was utilised to arrive to the final solution.
+The starting point chosen (implement `Item`) was because it was the "most familiar" part of the problem.
+
+The git log are intentionally verbose to allow reader of this repo to follow through how the code evolves.
+
+`int` was chosen instead of `double` to avoid rounding problems when performing multiplications and divisions.
+
+## Potential improvements
+
+- Better parsing of item to different types (a separate Parser class?)
+- Read input from file, output to file/stdout
+- Better handling of tax exemption (instead of violating OCP)
+- Better handling of different taxes (instead of violating OCP)
