@@ -8,12 +8,12 @@ public class TaxCalculator {
     public int getTax(Item item) {
         int tax = getBasicSalesTax(item.getPrice(), item.getType());
         if (item.isImported()) {
-            return tax + applyImportTax(item.getPrice());
+            return tax + getImportTax(item.getPrice());
         }
         return tax;
     }
 
-    private int applyImportTax(int price) {
+    private int getImportTax(int price) {
         return roundToNearestCents(price * 21 / 20 - price);
     }
 
